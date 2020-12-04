@@ -21,7 +21,7 @@ namespace AddressBookWorkshop
                 Console.WriteLine("Press 1 to Add your Contact: ");
                 Console.WriteLine("Press 2 to Display the Contact: ");
                 Console.WriteLine("Press 3 to Edit Contact");
-                Console.WriteLine("Press 4 to Delete Contact);
+                Console.WriteLine("Press 4 to Delete Contact");
                 Console.WriteLine("press 5 to Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
