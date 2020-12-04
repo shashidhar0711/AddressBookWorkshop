@@ -14,9 +14,13 @@ namespace AddressBookWorkshop
         public string address;
         public string city;
         public string state;
-        public int zipCode;
-        public long phoneNumber;
-        public string emailId;
+        public string zipCode;
+        public string phoneNumber;
+        public string eMailId;
+
+        public AddressBookModel()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AddressBookModel"/> class.
@@ -29,7 +33,7 @@ namespace AddressBookWorkshop
         /// <param name="zipCode">The zip code.</param>
         /// <param name="phoneNumber">The phone number.</param>
         /// <param name="emailId">The email identifier.</param>
-        public AddressBookModel(string firstName,string lastName, string address, string city, string state, int zipCode, long phoneNumber,string emailId)
+        public AddressBookModel(string firstName,string lastName, string address, string city, string state, string zipCode, string phoneNumber,string eMailId)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -38,7 +42,7 @@ namespace AddressBookWorkshop
             this.state = state;
             this.zipCode = zipCode;
             this.phoneNumber = phoneNumber;
-            this.emailId = emailId;
+            this.eMailId = eMailId;
         }
         /// <summary>
         /// Gets or sets the first name.
@@ -62,7 +66,7 @@ namespace AddressBookWorkshop
         /// <value>
         /// The adderss.
         /// </value>
-        public string Adderss { get => this.address; set => this.address = value; }
+        public string Address { get => this.address; set => this.address = value; }
 
         /// <summary>
         /// Gets or sets the city.
@@ -86,7 +90,7 @@ namespace AddressBookWorkshop
         /// <value>
         /// The zip code.
         /// </value>
-        public int ZipCode { get => this.zipCode; set => this.zipCode = value; }
+        public string ZipCode { get => this.zipCode; set => this.zipCode = value; }
 
         /// <summary>
         /// Gets or sets the phone number.
@@ -94,7 +98,7 @@ namespace AddressBookWorkshop
         /// <value>
         /// The phone number.
         /// </value>
-        public long PhoneNumber { get => this.phoneNumber; set => this.phoneNumber = value; }
+        public string PhoneNumber { get => this.phoneNumber; set => this.phoneNumber = value; }
 
         /// <summary>
         /// Gets or sets the email identifier.
@@ -102,6 +106,6 @@ namespace AddressBookWorkshop
         /// <value>
         /// The email identifier.
         /// </value>
-        public string EmailID { get => this.emailId; set => this.emailId = value; }
+        public string EmailID { get => this.eMailId; set => this.eMailId = value; }
     }
 }
