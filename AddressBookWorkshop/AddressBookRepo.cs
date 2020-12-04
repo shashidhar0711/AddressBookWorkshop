@@ -15,31 +15,38 @@ namespace AddressBookWorkshop
         /// </summary>
         public void AddContact()
         {
-            Console.WriteLine("Enter your First Name: ");
-            string firstName = Console.ReadLine();
-            addressBookRegex.ValidateFirstName(firstName);
-            Console.WriteLine("Enter your Last Name: ");
-            string lastName = Console.ReadLine();
-            addressBookRegex.ValidateLastName(lastName);
-            Console.WriteLine("Enter your Address: ");
-            string address = Console.ReadLine();
-            Console.WriteLine("Enter your City: ");
-            string city = Console.ReadLine();
-            Console.WriteLine("Enter your State: ");
-            string state = Console.ReadLine();
-            Console.WriteLine("Enter your Zip Code: ");
-            string zipCode = Console.ReadLine();
-            addressBookRegex.ValidateZipCode(zipCode);
-            Console.WriteLine("Enter your Phone Number: ");
-            string phoneNumber = Console.ReadLine();
-            addressBookRegex.ValidatePhoneNumber(phoneNumber);
-            Console.WriteLine("Enter your Email Id ;");
-            string eMailId = Console.ReadLine();
-            addressBookRegex.ValidateEmailId(eMailId);
+            try
+            {
+                Console.WriteLine("Enter your First Name: ");
+                string firstName = Console.ReadLine();
+                addressBookRegex.ValidateFirstName(firstName);
+                Console.WriteLine("Enter your Last Name: ");
+                string lastName = Console.ReadLine();
+                addressBookRegex.ValidateLastName(lastName);
+                Console.WriteLine("Enter your Address: ");
+                string address = Console.ReadLine();
+                Console.WriteLine("Enter your City: ");
+                string city = Console.ReadLine();
+                Console.WriteLine("Enter your State: ");
+                string state = Console.ReadLine();
+                Console.WriteLine("Enter your Zip Code: ");
+                string zipCode = Console.ReadLine();
+                addressBookRegex.ValidateZipCode(zipCode);
+                Console.WriteLine("Enter your Phone Number: ");
+                string phoneNumber = Console.ReadLine();
+                addressBookRegex.ValidatePhoneNumber(phoneNumber);
+                Console.WriteLine("Enter your Email Id ;");
+                string eMailId = Console.ReadLine();
+                addressBookRegex.ValidateEmailId(eMailId);
 
-            AddressBookModel addressBook = new AddressBookModel(firstName, lastName, address, city, state, zipCode, phoneNumber, eMailId);
-            this.addressBookList.Add(addressBook);
-            Console.WriteLine("Contact added successFull..");
+                AddressBookModel addressBook = new AddressBookModel(firstName, lastName, address, city, state, zipCode, phoneNumber, eMailId);
+                this.addressBookList.Add(addressBook);
+                Console.WriteLine("Contact added successFull..");
+            }
+            catch(AddressBookCustomException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
         }
 
         /// <summary>
@@ -103,57 +110,88 @@ namespace AddressBookWorkshop
         /// <param name="choice">The choice.</param>
         public void EditContactList(AddressBookModel addressBookModel, int choice)
         {
-
-            switch (choice)
+            try
             {
-                case 1:
-                    Console.WriteLine("Enter the first name");
-                    string firstName = Console.ReadLine();
-                    addressBookRegex.ValidateFirstName(firstName);
-                    addressBookModel.FirstName = firstName;
-                    break;
-                case 2:
-                    Console.WriteLine("Enter the last name");
-                    string lastName = Console.ReadLine();
-                    addressBookRegex.ValidateLastName(lastName);
-                    addressBookModel.LastName = lastName;
-                    break;
-                case 3:
-                    Console.WriteLine("Enter address");
-                    string address = Console.ReadLine();
-                    addressBookModel.Address = address;
-                    break;
-                case 4:
-                    Console.WriteLine("Enter city");
-                    string city = Console.ReadLine();
-                    addressBookModel.City = city;
-                    break;
-                case 5:
-                    Console.WriteLine("Enter state");
-                    string state = Console.ReadLine();
-                    addressBookModel.State = state;
-                    break;
-                case 6:
-                    Console.WriteLine("Enter Phone Number");
-                    string phoneNumber = Console.ReadLine();
-                    addressBookRegex.ValidatePhoneNumber(phoneNumber);
-                    addressBookModel.PhoneNumber = phoneNumber;
-                    break;
-                case 7:
-                    Console.WriteLine("Enter Zip code");
-                    string zipCode = Console.ReadLine();
-                    addressBookRegex.ValidateZipCode(zipCode);
-                    addressBookModel.ZipCode = zipCode;
-                    break;
-                case 8:
-                    Console.WriteLine("Enter Email Id");
-                    string eMailId = Console.ReadLine();
-                    addressBookRegex.ValidateEmailId(eMailId);
-                    addressBookModel.EmailID = eMailId;
-                    break;
-                default:
-                    Console.WriteLine("Enter valid choice");
-                    break;
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the first name");
+                        string firstName = Console.ReadLine();
+                        addressBookRegex.ValidateFirstName(firstName);
+                        addressBookModel.FirstName = firstName;
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the last name");
+                        string lastName = Console.ReadLine();
+                        addressBookRegex.ValidateLastName(lastName);
+                        addressBookModel.LastName = lastName;
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter address");
+                        string address = Console.ReadLine();
+                        addressBookModel.Address = address;
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter city");
+                        string city = Console.ReadLine();
+                        addressBookModel.City = city;
+                        break;
+                    case 5:
+                        Console.WriteLine("Enter state");
+                        string state = Console.ReadLine();
+                        addressBookModel.State = state;
+                        break;
+                    case 6:
+                        Console.WriteLine("Enter Phone Number");
+                        string phoneNumber = Console.ReadLine();
+                        addressBookRegex.ValidatePhoneNumber(phoneNumber);
+                        addressBookModel.PhoneNumber = phoneNumber;
+                        break;
+                    case 7:
+                        Console.WriteLine("Enter Zip code");
+                        string zipCode = Console.ReadLine();
+                        addressBookRegex.ValidateZipCode(zipCode);
+                        addressBookModel.ZipCode = zipCode;
+                        break;
+                    case 8:
+                        Console.WriteLine("Enter Email Id");
+                        string eMailId = Console.ReadLine();
+                        addressBookRegex.ValidateEmailId(eMailId);
+                        addressBookModel.EmailID = eMailId;
+                        break;
+                    default:
+                        Console.WriteLine("Enter valid choice");
+                        break;
+                }
+            }
+            catch(AddressBookCustomException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+        }
+
+        /// <summary>
+        /// Deletes the contact.
+        /// </summary>
+        public void DeleteContact()
+        {
+            Console.WriteLine("Enter your First Name");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Enter your Last Name");
+            string lastName = Console.ReadLine();
+
+            for (int index = 0; index < this.addressBookList.Count; index++)
+            {
+                if (addressBookList[index].FirstName.Equals(firstName) && addressBookList[index].LastName.Equals(lastName))
+                {
+                    /// It Checks, if Exist Contact will be Removed or deleted
+                    addressBookList.Remove(addressBookList[index]);
+                    Console.WriteLine("Contact deleted Successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Contacts Not Found!!");
+                }
             }
         }
 

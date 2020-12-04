@@ -39,20 +39,13 @@ namespace AddressBookWorkshop
         /// <exception cref="AddressBookWorkshop.AddressBookCustomException">Invalid First Name</exception>
         public void ValidateFirstName(string firstName)
         {
-            try
+            if (Regex.IsMatch(firstName, FIRST_NAME))
             {
-                if (Regex.IsMatch(firstName, FIRST_NAME))
-                {
-                    return;
-                }
-                else
-                {
-                    throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_FIRST_NAME, "Invalid First Name");
-                }
+                return;
             }
-            catch(Exception type)
+            else
             {
-                Console.WriteLine(type.Message);
+                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_FIRST_NAME, "Invalid First Name");
             }
         }
 
@@ -63,20 +56,13 @@ namespace AddressBookWorkshop
         /// <exception cref="AddressBookWorkshop.AddressBookCustomException">Invalid Last Name</exception>
         public void ValidateLastName(string lastName)
         {
-            try
+            if (Regex.IsMatch(lastName, LAST_NAME))
             {
-                if (Regex.IsMatch(lastName, LAST_NAME))
-                {
-                    return;
-                }
-                else
-                {
-                    throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_LAST_NAME, "Invalid Last Name");
-                }
+                return;
             }
-            catch (Exception type)
+            else
             {
-                Console.WriteLine(type.Message);
+                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_LAST_NAME, "Invalid Last Name");
             }
         }
 
@@ -87,20 +73,13 @@ namespace AddressBookWorkshop
         /// <exception cref="AddressBookWorkshop.AddressBookCustomException">Invalid Zip Code</exception>
         public void ValidateZipCode(string zipCode)
         {
-            try
+            if (Regex.IsMatch(zipCode, ZIPCODE))
             {
-                if (Regex.IsMatch(zipCode, ZIPCODE))
-                {
-                    return;
-                }
-                else
-                {
-                    throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_ZIPCODE, "Invalid Zip Code");
-                }
+                return;
             }
-            catch (Exception type)
+            else
             {
-                Console.WriteLine(type.Message);
+                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_ZIPCODE, "Invalid Zip Code");
             }
         }
 
@@ -111,20 +90,13 @@ namespace AddressBookWorkshop
         /// <exception cref="AddressBookWorkshop.AddressBookCustomException">Invalid Phone Number</exception>
         public void ValidatePhoneNumber(string phoneNumber)
         {
-            try
+            if (Regex.IsMatch(phoneNumber, MOBILE_NUMBER))
             {
-                if (Regex.IsMatch(phoneNumber, MOBILE_NUMBER))
-                {
-                    return;
-                }
-                else
-                {
-                    throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_PHONE_NUMBER, "Invalid Phone Number");
-                }
+                return;
             }
-            catch (Exception type)
+            else
             {
-                Console.WriteLine(type.Message);
+                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_PHONE_NUMBER, "Invalid Phone Number");
             }
         }
 
@@ -135,20 +107,13 @@ namespace AddressBookWorkshop
         /// <exception cref="AddressBookWorkshop.AddressBookCustomException">Invalid Email Id</exception>
         public void ValidateEmailId(string eMail)
         {
-            try
+            if (Regex.IsMatch(eMail, EMAIL_ID))
             {
-                if (Regex.IsMatch(eMail, EMAIL_ID))
-                {
-                    return;
-                }
-                else
-                {
-                    throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_EMAIL, "Invalid Email Id");
-                }
+                return;
             }
-            catch (Exception type)
+            else
             {
-                Console.WriteLine(type.Message);
+                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_EMAIL, "Invalid Email Id");
             }
         }
     }
