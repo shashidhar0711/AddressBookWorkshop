@@ -12,39 +12,7 @@ namespace AddressBookWorkshop
         {
             /// created reference of object class
             AddressBookRepo addressBookRepo = new AddressBookRepo();
-            bool found = true;
-            while(found)
-            {
-                Console.WriteLine("----------------------------------------------------------------------------");
-                Console.WriteLine("Welcome to AddressBook");
-                Console.WriteLine("Enter your Choice: ");
-                Console.WriteLine("Press 1 to Add your Contact: ");
-                Console.WriteLine("Press 2 to Display the Contact: ");
-                Console.WriteLine("Press 3 to Edit Contact");
-                Console.WriteLine("Press 4 to Delete Contact");
-                Console.WriteLine("press 5 to Exit");
-                int choice = Convert.ToInt32(Console.ReadLine());
-                switch (choice)
-                {
-                    case 1:
-                        addressBookRepo.AddContact();
-                        break;
-                    case 2:
-                        addressBookRepo.DisplayContact();
-                        break;
-                    case 3:
-                        addressBookRepo.EditContact();
-                        break;
-                    case 4:
-                        addressBookRepo.DeleteContact();
-                        break;
-                    case 5:
-                        return;
-                    default:
-                        Console.WriteLine("Enter a Valid Choice Try again :");
-                        break;
-                }
-            }
+            addressBookRepo.BookManagementView();
         }
     }
 }

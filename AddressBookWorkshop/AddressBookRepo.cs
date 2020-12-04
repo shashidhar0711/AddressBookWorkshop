@@ -9,6 +9,11 @@ namespace AddressBookWorkshop
         /// created address book list
         List<AddressBookModel> addressBookList = new List<AddressBookModel>();
         AddressBookRegex addressBookRegex = new AddressBookRegex();
+        AddressBookModel addressBookModel = new AddressBookModel();
+        /// <summary>
+        /// The address book dictionary
+        /// </summary>
+        private Dictionary<string, AddressBookRepo> AddressBookDictionary = new Dictionary<string, AddressBookRepo>();
 
         /// <summary>
         /// Addings the contact.
@@ -43,7 +48,7 @@ namespace AddressBookWorkshop
                 this.addressBookList.Add(addressBook);
                 Console.WriteLine("Contact added successFull..");
             }
-            catch(AddressBookCustomException exception)
+            catch (AddressBookCustomException exception)
             {
                 Console.WriteLine(exception.Message);
             }
@@ -219,6 +224,118 @@ namespace AddressBookWorkshop
             else
             {
                 Console.WriteLine("No contact to display!!");
+            }
+        }
+        /// <summary>
+        /// management view to Create new address book 
+        /// </summary>
+        public void BookManagementView()
+        {
+            int choice;
+            do
+            {
+                Console.WriteLine("Enter your Choice");
+                Console.WriteLine("Press 1 to create New Address Book");
+                Console.WriteLine("press 2 to Access Existing Adderss Book");
+                Console.WriteLine("press 3 to exit");
+                choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        /// New Book Name 
+                        string bookName = GetNewAddressBook();
+                        if (AddressBookDictionary.ContainsKey(bookName) == true)
+                        {
+                            Console.WriteLine("Already exist");
+                        }
+
+                        /// Create a Refernce of AddressBook
+                        /// Adding in to dictionary ie new book name
+                        AddressBookRepo addressBookRepo = new AddressBookRepo();
+                        AddressBookDictionary.Add(bookName, addressBookRepo);
+                        Console.WriteLine("Contact AdressBook created :" + bookName);
+                        addressBookRepo.UserMenu();
+                        break;
+
+                    case 2:
+                        /// Old Book Name 
+                        string oldBookName = GetBookNameToAccess();
+                        if (AddressBookDictionary.ContainsKey(oldBookName) == true)
+                        {
+                            Console.WriteLine("Welcome to AddressBook: " + oldBookName);
+                            AddressBookDictionary.GetValueOrDefault(oldBookName).UserMenu();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry! No such Address book exist");
+                        }
+                        break;
+
+                    case 3:
+                        break;
+
+                    default:
+                        Console.WriteLine("Enter Valid Choice between 1 to 3");
+                        break;
+                }
+            } while (choice != 3);
+        }
+
+        /// <summary>
+        /// Gets the new address book.
+        /// </summary>
+        /// <returns></returns>
+        public string GetNewAddressBook()
+        {
+            Console.WriteLine("Enter the Book Name");
+            string contactBook = Console.ReadLine();
+            return contactBook;
+        }
+
+        /// <summary>
+        /// Gets the book name to access.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetBookNameToAccess()
+        {
+            Console.WriteLine("Enter Book Name to Access");
+            string contactOldBook = Console.ReadLine();
+            return contactOldBook;
+        }
+
+        /// <summary>
+        /// Users the menu.
+        /// </summary>
+        public void UserMenu()
+        {
+            Console.WriteLine("Enter ur Choice:");
+            Console.WriteLine("Press 1 to Add contact");
+            Console.WriteLine("Press 2 to Edit contact");
+            Console.WriteLine("Press 3 to Delete contact");
+            Console.WriteLine("Press 4 to Display Contact");
+            Console.WriteLine("Press 5 to Exit");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            /// By Using Switch Method to Perform Specified Operation
+            switch (choice)
+            {
+                case 1:
+                    AddContact();
+                    break;
+                case 2:
+                    EditContact();
+                    break;
+                case 3:
+                    DeleteContact();
+                    break;
+                case 4:
+                    DisplayContact();
+                    break;
+                case 5:
+                    return;
+                default:
+                    Console.WriteLine("Enter a Valid Choice Try again :");
+                    break;
             }
         }
     }

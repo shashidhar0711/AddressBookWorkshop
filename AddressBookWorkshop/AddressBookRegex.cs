@@ -10,12 +10,12 @@ namespace AddressBookWorkshop
         /// <summary>
         /// The first name regex pattern
         /// </summary>
-        public const string FIRST_NAME = "^[A-Z][a-z]{2,}$";
+        public const string FIRST_NAME = "^[A-Z][a-z]{3,}$";
 
         /// <summary>
         /// The last name regex pattern
         /// </summary>
-        public const string LAST_NAME = "^[A-Z][a-z]{1,}$";
+        public const string LAST_NAME = "^[A-Z][a-z]{3,}$";
 
         /// <summary>
         /// The zipcode regex pattern
@@ -30,7 +30,7 @@ namespace AddressBookWorkshop
         /// <summary>
         /// The mobile number regex pattern
         /// </summary>
-        public const string MOBILE_NUMBER = "^[+][1-9][0-9]{0,2}[ ][1-9][0-9]{9}$";
+        public const string MOBILE_NUMBER = "^[1-9][0-9]{0,2}[ ][1-9][0-9]{9}$";
 
         /// <summary>
         /// Validates the first name.
